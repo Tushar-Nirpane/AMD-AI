@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Catalog – LearnAI</title>
+    <meta name="description"
+        content="Browse 10,000+ AI courses from every major provider. Advanced filters by AI sub-domain, skill level, certification, and more." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/catalog.css" />
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <span>LearnAI</span>
+            </a>
+            <div class="nav-links">
+                <a href="catalog.html" class="nav-link active">Explore Courses</a>
+                <a href="tutorial.html" class="nav-link">Tutorial Hub</a>
+                <a href="pro.html" class="nav-link">Pro</a>
+                <a href="index.html#community" class="nav-link">Community</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn-ghost" onclick="window.location.href='pro.html'">Sign In</button>
+                <button class="btn-primary" onclick="window.location.href='pro.html'">Get Pro</button>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="catalog-layout">
+
+        <!-- SIDEBAR FILTERS -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2><svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg> Filter Courses</h2>
+                <button class="clear-filters" id="clearFilters">Clear All</button>
+            </div>
+
+            <!-- AI Sub-domain -->
+            <div class="filter-group">
+                <div class="filter-group-header" onclick="toggleGroup(this)">
+                    <span>AI Sub-domain</span>
+                    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                        <polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="filter-group-body">
+                    <label class="filter-check"><input type="checkbox" value="genai" class="filter-cb"
+                            data-group="domain"> <span>Generative AI</span><span class="count">2,150</span></label>
+                    <label class="filter-check"><input type="checkbox" value="nlp" class="filter-cb"
+                            data-group="domain"> <span>NLP</span><span class="count">1,240</span></label>
+                    <label class="filter-check"><input type="checkbox" value="cv" class="filter-cb" data-group="domain">
+                        <span>Computer Vision</span><span class="count">980</span></label>
+                    <label class="filter-check"><input type="checkbox" value="ml" class="filter-cb" data-group="domain">
+                        <span>Machine Learning</span><span class="count">3,400</span></label>
+                    <label class="filter-check"><input type="checkbox" value="dl" class="filter-cb" data-group="domain">
+                        <span>Deep Learning</span><span class="count">1,890</span></label>
+                    <label class="filter-check"><input type="checkbox" value="rl" class="filter-cb" data-group="domain">
+                        <span>Reinforcement Learning</span><span class="count">420</span></label>
+                    <label class="filter-check"><input type="checkbox" value="mlops" class="filter-cb"
+                            data-group="domain"> <span>MLOps & Deployment</span><span class="count">310</span></label>
+                    <label class="filter-check"><input type="checkbox" value="aibiz" class="filter-cb"
+                            data-group="domain"> <span>AI for Business</span><span class="count">890</span></label>
+                </div>
+            </div>
+
+            <!-- Level -->
+            <div class="filter-group">
+                <div class="filter-group-header" onclick="toggleGroup(this)">
+                    <span>Skill Level</span>
+                    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                        <polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="filter-group-body">
+                    <label class="filter-check"><input type="checkbox" value="beginner" class="filter-cb"
+                            data-group="level"> <span>Beginner</span><span class="count">3,200</span></label>
+                    <label class="filter-check"><input type="checkbox" value="intermediate" class="filter-cb"
+                            data-group="level"> <span>Intermediate</span><span class="count">4,800</span></label>
+                    <label class="filter-check"><input type="checkbox" value="advanced" class="filter-cb"
+                            data-group="level"> <span>Advanced</span><span class="count">2,000</span></label>
+                </div>
+            </div>
+
+            <!-- Coding Required -->
+            <div class="filter-group">
+                <div class="filter-group-header" onclick="toggleGroup(this)">
+                    <span>Coding Required</span>
+                    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                        <polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="filter-group-body">
+                    <label class="filter-check"><input type="checkbox" value="none" class="filter-cb"
+                            data-group="coding"> <span>No Coding</span><span class="count">1,100</span></label>
+                    <label class="filter-check"><input type="checkbox" value="basic" class="filter-cb"
+                            data-group="coding"> <span>Basic (Python 101)</span><span class="count">2,400</span></label>
+                    <label class="filter-check"><input type="checkbox" value="intermediate-coding" class="filter-cb"
+                            data-group="coding"> <span>Intermediate</span><span class="count">4,200</span></label>
+                    <label class="filter-check"><input type="checkbox" value="advanced-coding" class="filter-cb"
+                            data-group="coding"> <span>Advanced</span><span class="count">2,300</span></label>
+                </div>
+            </div>
+
+            <!-- Instructor Type -->
+            <div class="filter-group">
+                <div class="filter-group-header" onclick="toggleGroup(this)">
+                    <span>Instructor Type</span>
+                    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                        <polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="filter-group-body">
+                    <label class="filter-radio"><input type="radio" name="instructor" value="all" checked
+                            class="filter-rb"> <span>All</span></label>
+                    <label class="filter-radio"><input type="radio" name="instructor" value="industry"
+                            class="filter-rb"> <span>Industry Practitioners</span></label>
+                    <label class="filter-radio"><input type="radio" name="instructor" value="academia"
+                            class="filter-rb"> <span>Academia / Research</span></label>
+                </div>
+            </div>
+
+            <!-- Hands-on Projects -->
+            <div class="filter-group">
+                <div class="filter-group-header" onclick="toggleGroup(this)">
+                    <span>Hands-on Projects</span>
+                    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                        <polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="filter-group-body">
+                    <label class="filter-check"><input type="checkbox" value="projects" class="filter-cb"
+                            data-group="projects" id="projectsFilter"> <span>Includes Projects</span></label>
+                </div>
+            </div>
+
+            <!-- Certificate Type -->
+            <div class="filter-group">
+                <div class="filter-group-header" onclick="toggleGroup(this)">
+                    <span>Certificate Type</span>
+                    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                        <polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="filter-group-body">
+                    <label class="filter-check"><input type="checkbox" value="university-credit" class="filter-cb"
+                            data-group="cert"> <span>University Credit</span></label>
+                    <label class="filter-check"><input type="checkbox" value="verified" class="filter-cb"
+                            data-group="cert"> <span>Verified Certificate</span></label>
+                    <label class="filter-check"><input type="checkbox" value="professional" class="filter-cb"
+                            data-group="cert"> <span>Professional Certificate</span></label>
+                    <label class="filter-check"><input type="checkbox" value="free-audit" class="filter-cb"
+                            data-group="cert"> <span>Free Audit Available</span></label>
+                </div>
+            </div>
+
+            <!-- Provider -->
+            <div class="filter-group">
+                <div class="filter-group-header" onclick="toggleGroup(this)">
+                    <span>Provider</span>
+                    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                        <polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="filter-group-body">
+                    <label class="filter-check"><input type="checkbox" value="coursera" class="filter-cb"
+                            data-group="provider"> <span>Coursera</span><span class="count">2,100</span></label>
+                    <label class="filter-check"><input type="checkbox" value="edx" class="filter-cb"
+                            data-group="provider"> <span>edX</span><span class="count">1,400</span></label>
+                    <label class="filter-check"><input type="checkbox" value="deepai" class="filter-cb"
+                            data-group="provider"> <span>DeepLearning.AI</span><span class="count">80</span></label>
+                    <label class="filter-check"><input type="checkbox" value="udacity" class="filter-cb"
+                            data-group="provider"> <span>Udacity</span><span class="count">450</span></label>
+                    <label class="filter-check"><input type="checkbox" value="fastai" class="filter-cb"
+                            data-group="provider"> <span>Fast.ai</span><span class="count">20</span></label>
+                    <label class="filter-check"><input type="checkbox" value="linkedin" class="filter-cb"
+                            data-group="provider"> <span>LinkedIn Learning</span><span class="count">890</span></label>
+                    <label class="filter-check"><input type="checkbox" value="huggingface" class="filter-cb"
+                            data-group="provider"> <span>Hugging Face</span><span class="count">60</span></label>
+                </div>
+            </div>
+
+            <!-- Community Paths toggle -->
+            <div class="filter-group">
+                <div class="filter-group-header" onclick="toggleGroup(this)">
+                    <span>Community Paths</span>
+                    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                        <polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="filter-group-body">
+                    <label class="filter-check"><input type="checkbox" value="community-paths" class="filter-cb"
+                            data-group="community"> <span>In Community Paths</span></label>
+                </div>
+            </div>
+
+            <!-- Price -->
+            <div class="filter-group">
+                <div class="filter-group-header" onclick="toggleGroup(this)">
+                    <span>Price</span>
+                    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                        <polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="filter-group-body">
+                    <label class="filter-check"><input type="checkbox" value="free" class="filter-cb"
+                            data-group="price"> <span>Free</span><span class="count">1,800</span></label>
+                    <label class="filter-check"><input type="checkbox" value="paid" class="filter-cb"
+                            data-group="price"> <span>Paid</span><span class="count">8,200</span></label>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="catalog-main">
+            <!-- Toolbar -->
+            <div class="catalog-toolbar">
+                <div class="toolbar-left">
+                    <div class="search-bar-catalog">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" />
+                            <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                        <input type="text" id="catalogSearch" placeholder="Search by topic, skill, or provider…" />
+                    </div>
+                    <span class="results-count" id="resultsCount">Showing 24 of 10,000+ courses</span>
+                </div>
+                <div class="toolbar-right">
+                    <span class="sort-label">Sort by:</span>
+                    <select id="sortSelect" class="sort-select">
+                        <option value="relevant">Most Relevant</option>
+                        <option value="rating">Highest Rated</option>
+                        <option value="popular">Most Popular</option>
+                        <option value="newest">Newest</option>
+                        <option value="price-asc">Price: Low to High</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Active Filters Pills -->
+            <div class="active-filters" id="activeFilters"></div>
+
+            <!-- SmartMatch Banner -->
+            <div class="smartmatch-banner" id="smartmatchBanner">
+                <div class="sm-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="sm-text">
+                    <strong>Smart Match</strong> — Not sure where to start? Take our 2-min quiz and get personalized
+                    course recommendations.
+                </div>
+                <button class="btn-sm-primary" id="smartMatchBtn">Take Quiz</button>
+                <button class="sm-close"
+                    onclick="document.getElementById('smartmatchBanner').style.display='none'">×</button>
+            </div>
+
+            <!-- Course Grid -->
+            <div class="courses-grid catalog-grid" id="catalogGrid">
+                <!-- Populated by JS -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <span class="page-dots">…</span>
+                <button class="page-btn">42</button>
+                <button class="page-btn page-next">Next →</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- SMART MATCH MODAL -->
+    <div class="modal-overlay" id="smartMatchModal" style="display:none;">
+        <div class="modal">
+            <button class="modal-close" onclick="closeSmartMatch()">×</button>
+            <div class="modal-header">
+                <div class="modal-icon">✨</div>
+                <h3>Smart Course Match</h3>
+                <p>Answer 3 quick questions to get your personalized AI learning path</p>
+            </div>
+            <div class="quiz-steps" id="quizSteps">
+                <div class="quiz-step active" data-step="1">
+                    <h4>What's your AI experience level?</h4>
+                    <div class="quiz-options">
+                        <button class="quiz-opt" onclick="selectQuizOpt(this, 1)">🌱 Complete Beginner</button>
+                        <button class="quiz-opt" onclick="selectQuizOpt(this, 1)">📊 I know basic ML</button>
+                        <button class="quiz-opt" onclick="selectQuizOpt(this, 1)">🧠 I build AI models</button>
+                        <button class="quiz-opt" onclick="selectQuizOpt(this, 1)">🚀 Advanced Researcher</button>
+                    </div>
+                </div>
+                <div class="quiz-step" data-step="2">
+                    <h4>What's your primary goal?</h4>
+                    <div class="quiz-options">
+                        <button class="quiz-opt" onclick="selectQuizOpt(this, 2)">💼 Career change into AI</button>
+                        <button class="quiz-opt" onclick="selectQuizOpt(this, 2)">📈 Upskill in current role</button>
+                        <button class="quiz-opt" onclick="selectQuizOpt(this, 2)">🏫 Teaching AI concepts</button>
+                        <button class="quiz-opt" onclick="selectQuizOpt(this, 2)">🔬 Personal projects</button>
+                    </div>
+                </div>
+                <div class="quiz-step" data-step="3">
+                    <h4>Which AI area excites you most?</h4>
+                    <div class="quiz-options">
+                        <button class="quiz-opt" onclick="selectQuizOpt(this, 3)">🤖 Generative AI & LLMs</button>
+                        <button class="quiz-opt" onclick="selectQuizOpt(this, 3)">👁️ Computer Vision</button>
+                        <button class="quiz-opt" onclick="selectQuizOpt(this, 3)">💬 NLP & Chatbots</button>
+                        <button class="quiz-opt" onclick="selectQuizOpt(this, 3)">📊 Data Science & ML</button>
+                    </div>
+                </div>
+            </div>
+            <div class="quiz-result" id="quizResult" style="display:none;">
+                <div class="result-icon">🎯</div>
+                <h4>Your Personalized Path</h4>
+                <p id="resultText">Based on your answers, we recommend starting with the <strong>AI for
+                        Everyone</strong> pathway…</p>
+                <button class="btn-primary" onclick="window.location.href='catalog.html'; closeSmartMatch()">See My
+                    Courses</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/catalog.js"></script>
+    <script src="js/nav.js"></script>
+</body>
+
+</html>

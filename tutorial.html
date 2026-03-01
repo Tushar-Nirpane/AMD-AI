@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial Hub – LearnAI</title>
+    <meta name="description"
+        content="AI Tutorial Hub: Get instant step-by-step explanations, code snippets, and solutions for any AI problem, linked to full courses." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/tutorial.css" />
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <span>LearnAI</span>
+            </a>
+            <div class="nav-links">
+                <a href="catalog.html" class="nav-link">Explore Courses</a>
+                <a href="tutorial.html" class="nav-link active">Tutorial Hub</a>
+                <a href="pro.html" class="nav-link">Pro</a>
+                <a href="index.html#community" class="nav-link">Community</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn-ghost" onclick="window.location.href='pro.html'">Sign In</button>
+                <button class="btn-primary" onclick="window.location.href='pro.html'">Get Pro</button>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="tutorial-layout">
+
+        <!-- LEFT: Input Panel -->
+        <div class="tutorial-input-panel">
+            <div class="tutorial-input-header">
+                <div class="tutorial-icon-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="tutorial-title">The Solver</h1>
+                    <p class="tutorial-subtitle">Ask any AI question. Get instant, verified answers.</p>
+                </div>
+            </div>
+
+            <div class="solver-input-group">
+                <textarea id="solverQuery" class="solver-textarea"
+                    placeholder="Ask your AI question…&#10;&#10;e.g. How do I implement backpropagation from scratch in Python?"
+                    rows="4"></textarea>
+                <div class="solver-input-meta">
+                    <div class="format-selector">
+                        <span class="format-label">Answer format:</span>
+                        <div class="format-tabs">
+                            <button class="format-tab active" data-format="explain" id="fmtExplain">📖 Explain</button>
+                            <button class="format-tab" data-format="code" id="fmtCode">💻 Code</button>
+                            <button class="format-tab" data-format="eli5" id="fmtEli5">🧒 ELI5</button>
+                            <button class="format-tab" data-format="steps" id="fmtSteps">📋 Step-by-Step</button>
+                        </div>
+                    </div>
+                    <button class="btn-solve-lg" id="solveBtnMain" onclick="generateTutorial()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" />
+                        </svg>
+                        Solve
+                    </button>
+                </div>
+            </div>
+
+            <!-- Example Queries -->
+            <div class="example-queries">
+                <p class="eq-label">Try these:</p>
+                <div class="eq-grid">
+                    <button class="eq-card" onclick="setQuery(this, 'backprop')">
+                        <span class="eq-icon">⚙️</span>
+                        <span>Implement backpropagation from scratch in Python</span>
+                    </button>
+                    <button class="eq-card" onclick="setQuery(this, 'attention')">
+                        <span class="eq-icon">🔮</span>
+                        <span>Explain attention mechanisms like I'm five</span>
+                    </button>
+                    <button class="eq-card" onclick="setQuery(this, 'overfit')">
+                        <span class="eq-icon">🛡️</span>
+                        <span>My PyTorch model is overfitting, how to fix it?</span>
+                    </button>
+                    <button class="eq-card" onclick="setQuery(this, 'chatbot')">
+                        <span class="eq-icon">🤖</span>
+                        <span>Build a chatbot with Python and LangChain</span>
+                    </button>
+                    <button class="eq-card" onclick="setQuery(this, 'transformer')">
+                        <span class="eq-icon">🧠</span>
+                        <span>How do Transformers work step by step?</span>
+                    </button>
+                    <button class="eq-card" onclick="setQuery(this, 'rag')">
+                        <span class="eq-icon">📚</span>
+                        <span>What is RAG and how to implement it?</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Recent History -->
+            <div class="recent-queries">
+                <p class="eq-label">Recent:</p>
+                <div id="recentList">
+                    <div class="recent-item">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                            <polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                        What is a neural network?
+                    </div>
+                    <div class="recent-item">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                            <polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                        Explain gradient descent visually
+                    </div>
+                    <div class="recent-item">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                            <polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                        Fine-tuning vs RAG: when to use each?
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT: Output Panel -->
+        <div class="tutorial-output-panel">
+
+            <!-- Empty State -->
+            <div class="output-empty" id="outputEmpty">
+                <div class="empty-illustration">
+                    <div class="em-orb em-orb1"></div>
+                    <div class="em-orb em-orb2"></div>
+                    <div class="em-orb em-orb3"></div>
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" class="em-icon">
+                        <path
+                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                            stroke="url(#g1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <defs>
+                            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                                <stop stop-color="#818cf8" />
+                                <stop offset="1" stop-color="#8b5cf6" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <h3>Ask The Solver anything</h3>
+                <p>Type your AI question on the left. Get instant tutorials, code examples, and links to courses that
+                    explain the concept in depth.</p>
+            </div>
+
+            <!-- Loading State -->
+            <div class="output-loading" id="outputLoading" style="display:none;">
+                <div class="loading-dots">
+                    <span></span><span></span><span></span>
+                </div>
+                <p>Generating your answer…</p>
+            </div>
+
+            <!-- Answer Output -->
+            <div class="output-answer" id="outputAnswer" style="display:none;">
+
+                <!-- Answer Header -->
+                <div class="answer-header">
+                    <div class="answer-meta">
+                        <div class="answer-badges">
+                            <span class="badge ai-badge-sm">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="2" />
+                                </svg>
+                                AI Generated
+                            </span>
+                            <span class="badge pending-badge">· Review Pending</span>
+                        </div>
+                        <h2 class="answer-title" id="answerTitle"></h2>
+                    </div>
+                    <div class="answer-actions">
+                        <button class="action-btn" title="Copy" onclick="copyAnswer()">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor"
+                                    stroke-width="2" />
+                                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor"
+                                    stroke-width="2" />
+                            </svg>
+                            Copy
+                        </button>
+                        <button class="action-btn" title="Save" onclick="saveTutorial()">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                                <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"
+                                    stroke="currentColor" stroke-width="2" />
+                                <polyline points="17 21 17 13 7 13 7 21" stroke="currentColor" stroke-width="2" />
+                                <polyline points="7 3 7 8 15 8" stroke="currentColor" stroke-width="2" />
+                            </svg>
+                            Save
+                        </button>
+                        <button class="action-btn" title="Share">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                                <circle cx="18" cy="5" r="3" stroke="currentColor" stroke-width="2" />
+                                <circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="2" />
+                                <circle cx="18" cy="19" r="3" stroke="currentColor" stroke-width="2" />
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" stroke="currentColor"
+                                    stroke-width="2" />
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" stroke="currentColor"
+                                    stroke-width="2" />
+                            </svg>
+                            Share
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tabs: AI vs Community -->
+                <div class="answer-tabs">
+                    <button class="answer-tab active" onclick="switchTab(this,'ai')">AI Answer</button>
+                    <button class="answer-tab" onclick="switchTab(this,'community')">Community Versions <span
+                            class="tab-count">3</span></button>
+                </div>
+
+                <!-- AI Content -->
+                <div class="answer-content" id="aiContent">
+                    <div class="answer-explanation" id="answerExplanation"></div>
+                    <div class="answer-code" id="answerCode"></div>
+                </div>
+
+                <!-- Community Content -->
+                <div class="answer-content" id="communityContent" style="display:none;">
+                    <div class="community-versions" id="communityVersions">
+                        <div class="cv-item">
+                            <div class="cv-header">
+                                <div class="cv-author">
+                                    <div class="cv-avatar">A</div>
+                                    <span>ailearner_2024</span>
+                                    <span class="cv-tag">Community</span>
+                                </div>
+                                <div class="cv-votes">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                                        <polyline points="18 15 12 9 6 15" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    42
+                                </div>
+                            </div>
+                            <p>Here's a more intuitive way to think about this: imagine your model is a student who
+                                studied too hard for practice tests but freezes on real exams. Dropout is like randomly
+                                removing flashcards during study so the student learns the concepts, not the cards…</p>
+                        </div>
+                        <div class="cv-item">
+                            <div class="cv-header">
+                                <div class="cv-author">
+                                    <div class="cv-avatar" style="background:var(--accent-green)">B</div>
+                                    <span>pytorch_practitioner</span>
+                                    <span class="cv-tag verified">✓ Verified</span>
+                                </div>
+                                <div class="cv-votes">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                                        <polyline points="18 15 12 9 6 15" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    89
+                                </div>
+                            </div>
+                            <p>From production experience: L2 regularization (weight decay) is almost always sufficient
+                                for most models. Start with weight_decay=1e-4 in your optimizer before adding Dropout
+                                complexity…</p>
+                        </div>
+                    </div>
+                    <button class="btn-ghost btn-sm" onclick="openContribute()">+ Add Your Version</button>
+                </div>
+
+                <!-- Human Verified Section -->
+                <div class="human-verified-section" id="hvSection" style="display:none;">
+                    <div class="hv-card">
+                        <div class="hv-icon-lg">✓</div>
+                        <div class="hv-content">
+                            <div class="hv-title">Human Verified (The Quality Layer)</div>
+                            <div class="hv-sub">Validated & enhanced by a <strong>LearnAI Verified Expert</strong></div>
+                            <div class="hv-expert">
+                                <div class="expert-avatar">ML</div>
+                                <div>
+                                    <div class="expert-name">Dr. Marcus Lee</div>
+                                    <div class="expert-role">Senior ML Engineer, ex-Google Brain</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Recommendation -->
+                <div class="course-rec-section" id="courseRecSection" style="display:none;">
+                    <div class="rec-intro">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                                fill="var(--accent-yellow)" stroke="var(--accent-yellow)" stroke-width="1" />
+                        </svg>
+                        <span>Recommended Courses</span>
+                    </div>
+                    <p class="rec-subtext">This concept is covered extensively in these courses:</p>
+                    <div class="rec-courses" id="recCourses"></div>
+                    <button class="btn-primary btn-sm" onclick="window.location.href='catalog.html'">
+                        Add to My Path
+                    </button>
+                </div>
+
+                <!-- Feedback -->
+                <div class="answer-feedback" id="answerFeedback" style="display:none;">
+                    <span>Was this helpful?</span>
+                    <button class="fb-btn" onclick="giveFeedback('up', this)">👍</button>
+                    <button class="fb-btn" onclick="giveFeedback('down', this)">👎</button>
+                    <button class="fb-btn" onclick="reportAnswer()">🚩 Report</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contribute Modal -->
+    <div class="modal-overlay" id="contributeModal" style="display:none;">
+        <div class="modal modal-sm">
+            <button class="modal-close" onclick="closeContribute()">×</button>
+            <h3>Contribute Your Version</h3>
+            <p>Share your explanation. If it's upvoted, you'll earn Expert credibility.</p>
+            <textarea class="contribute-textarea" placeholder="Write your explanation or code here…"
+                rows="6"></textarea>
+            <button class="btn-primary" style="width:100%;margin-top:12px" onclick="closeContribute()">Submit for
+                Review</button>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/tutorial.js"></script>
+    <script src="js/nav.js"></script>
+</body>
+
+</html>

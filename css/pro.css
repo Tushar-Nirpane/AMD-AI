@@ -1,0 +1,660 @@
+/* ============================================================
+   Pro Page Styles
+   ============================================================ */
+
+/* Pro Hero */
+.pro-hero {
+    padding: calc(var(--nav-h) + 80px) 0 80px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.pro-hero-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.pro-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+}
+
+.pro-orb1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, #8b5cf6, transparent 70%);
+    top: -200px;
+    right: -150px;
+    animation: float 8s ease-in-out infinite;
+}
+
+.pro-orb2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #818cf8, transparent 70%);
+    bottom: -100px;
+    left: -100px;
+    animation: float 10s ease-in-out infinite reverse;
+}
+
+.pro-hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.pro-hero-content h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 16px 0 20px;
+}
+
+.pro-hero-content p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ============================================================
+   Pricing
+   ============================================================ */
+.pricing-section {
+    padding: 0 0 80px;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.pricing-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 36px;
+    position: relative;
+    transition: transform var(--tr), box-shadow var(--tr);
+}
+
+.pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+}
+
+.pricing-card.featured-plan {
+    background: linear-gradient(145deg, rgba(139, 92, 246, 0.12), rgba(129, 140, 248, 0.08));
+    border-color: rgba(129, 140, 248, 0.35);
+    transform: scale(1.02);
+    box-shadow: 0 0 60px rgba(129, 140, 248, 0.15);
+}
+
+.pricing-card.featured-plan:hover {
+    transform: scale(1.02) translateY(-4px);
+}
+
+.pricing-card.enterprise-plan {
+    background: linear-gradient(145deg, rgba(34, 211, 238, 0.06), rgba(52, 211, 153, 0.04));
+    border-color: rgba(52, 211, 153, 0.2);
+}
+
+.plan-badge {
+    display: inline-flex;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    background: var(--gradient-primary);
+    color: #fff;
+    border-radius: var(--radius-full);
+    margin-bottom: 16px;
+}
+
+.enterprise-badge {
+    background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+}
+
+.plan-header {
+    margin-bottom: 28px;
+}
+
+.plan-name {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.plan-price {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.price-num {
+    font-family: var(--font-display);
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.price-period {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.plan-tagline {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+}
+
+.plan-features {
+    list-style: none;
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.plan-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.feat-check {
+    color: var(--accent-green);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    flex-shrink: 0;
+}
+
+.feat-x {
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+    flex-shrink: 0;
+}
+
+.feat-no {
+    opacity: 0.5;
+}
+
+.btn-plan-ghost {
+    width: 100%;
+    padding: 14px 24px;
+    background: transparent;
+    border: 1px solid var(--border-hover);
+    border-radius: var(--radius-full);
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--tr);
+}
+
+.btn-plan-ghost:hover {
+    border-color: var(--accent-indigo);
+    color: var(--accent-indigo);
+    background: rgba(129, 140, 248, 0.05);
+}
+
+.btn-plan-primary {
+    width: 100%;
+    padding: 14px 24px;
+    border-radius: var(--radius-full);
+    font-size: 0.9375rem;
+}
+
+.btn-plan-outline {
+    width: 100%;
+    padding: 14px 24px;
+    background: transparent;
+    border: 2px solid rgba(52, 211, 153, 0.4);
+    border-radius: var(--radius-full);
+    color: var(--accent-green);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--tr);
+}
+
+.btn-plan-outline:hover {
+    background: rgba(52, 211, 153, 0.08);
+    border-color: var(--accent-green);
+}
+
+.plan-trial {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 12px;
+}
+
+/* ============================================================
+   Enterprise Dashboard
+   ============================================================ */
+.enterprise-dashboard-section {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.ed-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* Dashboard Mock */
+.dashboard-mock {
+    background: var(--bg-card);
+    border: 1px solid var(--border-hover);
+    border-radius: var(--radius-xl);
+    padding: 24px;
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+}
+
+.dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 0.8125rem;
+}
+
+.dash-title {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.dash-period {
+    color: var(--text-muted);
+}
+
+.dash-chart {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    height: 120px;
+    margin-bottom: 20px;
+}
+
+.chart-bar-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+.chart-bar {
+    width: 100%;
+    min-height: 8px;
+    background: linear-gradient(to top, var(--accent-indigo), rgba(129, 140, 248, 0.5));
+    border-radius: 4px 4px 0 0;
+    transition: height 0.5s ease;
+}
+
+.chart-bar-group span {
+    font-size: 0.625rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.dash-teams {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dash-team {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.team-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 100px;
+}
+
+.team-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.team-info span {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.team-progress {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--accent-indigo);
+    border-radius: 3px;
+    transition: width 1s ease;
+}
+
+.team-progress span {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    min-width: 30px;
+}
+
+/* ============================================================
+   Pro Learner Dashboard
+   ============================================================ */
+.pro-dashboard-section {
+    background: var(--bg-base);
+}
+
+.pro-dash-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.pro-dash-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-hover);
+    border-radius: var(--radius-xl);
+    padding: 24px;
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+}
+
+.pdc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.pdc-header span:first-child {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.pdc-streak {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-yellow);
+    background: rgba(251, 191, 36, 0.1);
+    border-radius: var(--radius-full);
+    padding: 3px 10px;
+}
+
+.pdc-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.pdc-stat {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 12px;
+    text-align: center;
+}
+
+.pdc-num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent-indigo);
+}
+
+.pdc-l {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+}
+
+.pdc-courses {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pdc-course {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 12px;
+}
+
+.pdc-course-info {
+    min-width: 0;
+}
+
+.pdc-provider {
+    display: block;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent-indigo);
+}
+
+.pdc-title {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pdc-bar {
+    width: 80px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.pdc-bar div {
+    height: 100%;
+    background: var(--accent-indigo);
+    border-radius: 2px;
+}
+
+.pdc-course.completed .pdc-bar div {
+    background: var(--accent-green);
+}
+
+.pdc-course.in-progress .pdc-provider {
+    color: var(--accent-violet);
+}
+
+.pdc-pct {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    min-width: 28px;
+    text-align: right;
+}
+
+.pdc-course.completed .pdc-pct {
+    color: var(--accent-green);
+}
+
+/* ============================================================
+   Monetization Cards
+   ============================================================ */
+.community-paths-section {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border);
+}
+
+.monetization-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.mono-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+    text-align: center;
+    transition: all var(--tr);
+}
+
+.mono-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-glow);
+}
+
+.mono-card.featured-mono {
+    background: linear-gradient(135deg, rgba(129, 140, 248, 0.1), rgba(139, 92, 246, 0.06));
+    border-color: rgba(129, 140, 248, 0.25);
+}
+
+.mono-icon {
+    font-size: 2rem;
+    margin-bottom: 14px;
+}
+
+.mono-card h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.mono-card p {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ============================================================
+   Checkout Form
+   ============================================================ */
+.checkout-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.checkout-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkout-input {
+    width: 100%;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+    outline: none;
+    transition: border-color var(--tr);
+    font-family: var(--font-sans);
+}
+
+.checkout-input:focus {
+    border-color: var(--accent-indigo);
+}
+
+.checkout-input::placeholder {
+    color: var(--text-muted);
+}
+
+.card-row {
+    display: flex;
+    gap: 8px;
+}
+
+.checkout-secure {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 12px;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 1024px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    .pricing-card.featured-plan {
+        transform: none;
+    }
+
+    .ed-grid,
+    .pro-dash-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .monetization-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .monetization-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .pdc-stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
